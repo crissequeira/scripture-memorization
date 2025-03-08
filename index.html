@@ -122,7 +122,6 @@
 
         #bible-verse,
         #solution-write,
-        #solution-show,
         #button-next,
         #rounds-total,
         #rounds-correct,
@@ -130,7 +129,6 @@
         #button-instructions {
 
             display: block;
-            vertical-align: middle;
             
             font-family: "Courier New", Courier, monospace;
             font-size: 24px;
@@ -150,6 +148,7 @@
             width: 340px;
             height: 50px;
             margin-top: 20px;
+            margin-bottom: 20px;
 
             line-height: 50px;
 
@@ -157,7 +156,7 @@
 
         /*
         ========================================================================
-        Wrappers
+        Wrappers and containers
         ========================================================================
         */
 
@@ -179,21 +178,21 @@
 
         }
 
-        /*
-        ========================================================================
-        <textarea>
-        ========================================================================
-        */
+        .container {
 
-        .solution-container {
-
+            display: block;
             width: 360px;
-            margin: 20px 0 20px 0;
+            margin-bottom: 20px;
 
         }
 
-        #solution-write,
-        #solution-show {
+        /*
+        ========================================================================
+        Solution
+        ========================================================================
+        */
+
+        #solution-write {
 
             display: table-cell;
             width: 340px;
@@ -204,8 +203,7 @@
 
         }
 
-        #solution-write:focus,
-        #solution-show:focus {
+        #solution-write:focus {
 
             outline: none;
 
@@ -217,36 +215,36 @@
         ========================================================================
         */
 
+        #rounds-total {
+            
+            width: 340px;
+            margin-bottom: 20px;
+            line-height: 50px;
+
+        }
+
         #rounds-total,
         #rounds-correct,
         #rounds-wrong {
             
             height: 50px;
-            margin-top: 20px;
-
-            line-height: 50px;
-
-        }
-
-        #rounds-total {
-
-            width: 340px;
 
         }
 
         #rounds-correct,
         #rounds-wrong {
 
-            float: left;
-
+            display: table-cell;
             width: 150px;
-            margin-bottom: 20px;
+            vertical-align: middle;
 
         }
 
-        #rounds-correct {
+        #rounds-space {
 
-            margin-right: 20px;
+            display: table-cell;
+            width: 20px;            
+            height: 50px;
 
         }
 
@@ -256,11 +254,19 @@
         ========================================================================
         */
 
+        #button-next {
+
+            margin-bottom: 20px;
+
+        }
+
         #button-next,
         #button-instructions {
 
-            width: 360px;
-            height: 70px;
+            width: 340px;
+            height: 50px;
+
+            line-height: 50px;
 
         }
 
@@ -287,17 +293,17 @@
 
         </div>
 
-        <div class="solution-container">
+        <div class="container">
 
             <div id="solution-write" class="white-box" contenteditable="true"></div>
 
         </div>
 
-        <button id="button-next" class="white-box"  type="button">
+        <div id="button-next" class="white-box">
 
             -
 
-        </button>
+        </div>
 
         <div id="rounds-total" class="white-box">
 
@@ -305,23 +311,33 @@
 
         </div>
 
-        <div id="rounds-correct" class="white-box">
+        <div class="container">
+
+            <div id="rounds-correct" class="white-box">
+
+                -
+
+            </div>
+
+            <div id="rounds-space">
+
+                &nbsp;
+
+            </div>
+
+            <div id="rounds-wrong" class="white-box">
+
+                -
+
+            </div>
+
+        </div>
+
+        <div id="button-instructions" class="white-box">
 
             -
 
         </div>
-
-        <div id="rounds-wrong" class="white-box">
-
-            -
-
-        </div>
-
-        <button id="button-instructions" class="white-box"  type="button">
-
-            -
-
-        </button>
 
     </div>
 
