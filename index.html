@@ -293,12 +293,6 @@
 
         </div>
 
-        <div class="solution-container">
-
-            <div id="solution-show" class="white-box"></div>
-
-        </div>
-
         <button id="button-next" class="white-box"  type="button">
 
             -
@@ -356,24 +350,22 @@
         /* Variables for text input. */
 
         const solutionWrite = document.getElementById('solution-write');
-        const solutionShow = document.getElementById('solution-show');
         const solutionVerse = "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.";
 
         /* Continuously checks if text input is correct and changes color. */
 
         solutionWrite.addEventListener("input", function () {
-            solutionShow.innerText = solutionWrite.innerText;
             
             if (solutionWrite.innerText.trim() === "") {
-                solutionShow.style.backgroundColor = "white";
-                solutionShow.style.borderColor = "white";
+                solutionWrite.style.backgroundColor = "white";
+                solutionWrite.style.borderColor = "white";
             }
             else if (solutionVerse.startsWith(solutionWrite.innerText.trim())) {
-                solutionShow.style.backgroundColor = "lightgreen";
-                solutionShow.style.borderColor = "lightgreen";
+                solutionWrite.style.backgroundColor = "lightgreen";
+                solutionWrite.style.borderColor = "lightgreen";
             } else {
-                solutionShow.style.backgroundColor = "lightcoral";
-                solutionShow.style.borderColor = "lightcoral";
+                solutionWrite.style.backgroundColor = "lightcoral";
+                solutionWrite.style.borderColor = "lightcoral";
             }
         });
 
