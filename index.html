@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <title>Scripture memorization</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="A a JavaScript practice exercise that allows you to practice memorizing Scripture in the browser.">
+    <meta name="keywords" content="scripture-memorization">
+    <meta name="author" content="crizz.bearblog.dev">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+
+        Image source: https://openmoji.org/library/emoji-E1C1/
+        Favicon generator: https://favicon.io/favicon-converter/
+
+    -->
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+
+    <style>
+
+        /*
+        ========================================================================
+        Declaration order
+        ========================================================================
+        */
+
+        /* Positioning */
+
+        /* Display & Box Model */
+
+        /* Color */
+
+        /* Text */
+
+        /* Other */
+
+        /*
+        ========================================================================
+        Example
+        ========================================================================
+        */
+
+        /*
+            float: ;
+            position: ;
+            z-index: 0;
+            top: 0;
+            right: 0;
+            
+            display: ;
+            overflow: ;
+            box-sizing: ;
+            width: 0px;
+            height: 0px;
+            padding: 0px;
+            border: 10px solid #000;
+            border-collapse: ;
+            border-radius: 10px;
+            margin: 0px;
+            vertical-align: middle;
+            resize: ;
+            
+            background: ;
+            color: ;
+            
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: ;
+            line-height: 1.4;
+            text-align: right;
+
+            cursor: ;
+            outline: ;
+        */
+
+        /*
+        ========================================================================
+        Inspiration
+        ========================================================================
+        */
+
+        /*
+            Check out “Principles of writing consistent, idiomatic CSS”
+            for more ideas: https://github.com/necolas/idiomatic-css/
+        */
+
+        /*
+        ========================================================================
+        Universial
+        ========================================================================
+        */
+
+        body {
+
+            box-sizing: border-box;
+            padding: 0px;
+            border: 0px;
+            margin: 0px;;
+
+            background: #F3F2F8;
+            
+            font-family: "Courier New", Courier, monospace;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .white-box {
+
+            border: 10px solid white;
+            border-radius: 10px;
+
+            background-color: white;
+
+        }
+
+        #bible-verse,
+        #solution-write,
+        #solution-show,
+        #button-next,
+        #rounds-total,
+        #rounds-correct,
+        #rounds-wrong,
+        #button-instructions {
+
+            display: block;
+            vertical-align: middle;
+            
+            font-family: "Courier New", Courier, monospace;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+
+        }
+
+        /*
+        ========================================================================
+        Bible verse
+        ========================================================================
+        */
+
+        #bible-verse {
+            
+            width: 340px;
+            height: 50px;
+            margin-top: 20px;
+
+            line-height: 50px;
+
+        }
+
+        /*
+        ========================================================================
+        Wrappers
+        ========================================================================
+        */
+
+        #wrapper-game,
+        #wrapper-instructions {
+
+            position: absolute;
+            left: 50%;
+
+            display: block;
+            width: 360px;
+            margin-left: -160px;
+
+        }
+
+        #wrapper-instructions {
+
+            display: none;
+
+        }
+
+        /*
+        ========================================================================
+        <textarea>
+        ========================================================================
+        */
+
+        .solution-container {
+
+            width: 360px;
+            margin: 20px 0 20px 0;
+
+        }
+
+        #solution-write,
+        #solution-show {
+
+            display: table-cell;
+            width: 340px;
+            height: 340px;
+            padding: 0;
+            vertical-align: middle;
+            resize: none;
+
+        }
+
+        #solution-write:focus,
+        #solution-show:focus {
+
+            outline: none;
+
+        }
+
+        /*
+        ========================================================================
+        Rounds
+        ========================================================================
+        */
+
+        #rounds-total,
+        #rounds-correct,
+        #rounds-wrong {
+            
+            height: 50px;
+            margin-top: 20px;
+
+            line-height: 50px;
+
+        }
+
+        #rounds-total {
+
+            width: 340px;
+
+        }
+
+        #rounds-correct,
+        #rounds-wrong {
+
+            float: left;
+
+            width: 150px;
+            margin-bottom: 20px;
+
+        }
+
+        #rounds-correct {
+
+            margin-right: 20px;
+
+        }
+
+        /*
+        ========================================================================
+        Buttons
+        ========================================================================
+        */
+
+        #button-next,
+        #button-instructions {
+
+            width: 360px;
+            height: 70px;
+
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <!--
+
+        ========================================================================
+        Game
+        ========================================================================
+        
+    -->
+
+    <div id="wrapper-game">
+
+        <div id="bible-verse" class="white-box">
+
+            John 3:16
+
+        </div>
+
+        <div class="solution-container">
+
+            <div id="solution-write" class="white-box" contenteditable="true"></div>
+
+        </div>
+
+        <div class="solution-container">
+
+            <div id="solution-show" class="white-box"></div>
+
+        </div>
+
+        <button id="button-next" class="white-box"  type="button">
+
+            -
+
+        </button>
+
+        <div id="rounds-total" class="white-box">
+
+            -
+
+        </div>
+
+        <div id="rounds-correct" class="white-box">
+
+            -
+
+        </div>
+
+        <div id="rounds-wrong" class="white-box">
+
+            -
+
+        </div>
+
+        <button id="button-instructions" class="white-box"  type="button">
+
+            -
+
+        </button>
+
+    </div>
+
+    <!--
+
+        ========================================================================
+        Instructions
+        ========================================================================
+        
+    -->
+
+    <div id="wrapper-instructions">
+
+    </div>
+
+    <!--
+
+        ========================================================================
+        JavaScript
+        ========================================================================
+        
+    -->
+
+    <script>
+
+        /* Variables for text input. */
+
+        const solutionWrite = document.getElementById('solution-write');
+        const solutionShow = document.getElementById('solution-show');
+        const solutionVerse = "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.";
+
+        /* Continuously checks if text input is correct and changes color. */
+
+        solutionWrite.addEventListener("input", function () {
+            solutionShow.innerText = solutionWrite.innerText;
+            
+            if (solutionWrite.innerText.trim() === "") {
+                solutionShow.style.backgroundColor = "white";
+                solutionShow.style.borderColor = "white";
+            }
+            else if (solutionVerse.startsWith(solutionWrite.innerText.trim())) {
+                solutionShow.style.backgroundColor = "lightgreen";
+                solutionShow.style.borderColor = "lightgreen";
+            } else {
+                solutionShow.style.backgroundColor = "lightcoral";
+                solutionShow.style.borderColor = "lightcoral";
+            }
+        });
+
+    </script>
+
+</body>
+</html>
